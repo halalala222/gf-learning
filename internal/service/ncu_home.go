@@ -15,6 +15,7 @@ type (
 	INcuHome interface {
 		Create(ctx context.Context, ncuHomeInput model.NcuHomeDto) error
 		Get(ctx context.Context) ([]model.NcuHomeDto, error)
+		Update(ctx context.Context, ncuHomeInput model.NcuHomeDto) error
 	}
 )
 
