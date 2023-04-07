@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "demo/internal/packed"
+	_ "github.com/halalala222/gf-learning/internal/packed"
 
 	"github.com/gogf/gf/v2/os/gctx"
 
-	"demo/internal/cmd"
+	"github.com/halalala222/gf-learning/internal/cmd"
 )
 
 func main() {
