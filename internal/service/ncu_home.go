@@ -13,7 +13,7 @@ import (
 
 type (
 	INcuHome interface {
-		Create(ctx context.Context, ncuHomeInput model.NcuHomeDto) error
+		Create(ctx context.Context, ncuHomeInput model.NcuHomeDto) (int64, error)
 		Get(ctx context.Context) ([]model.NcuHomeDto, error)
 		Update(ctx context.Context, ncuHomeInput model.NcuHomeDto) error
 	}
