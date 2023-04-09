@@ -2,16 +2,18 @@ package ncu_home
 
 import (
 	"context"
-	v1 "github.com/halalala222/gf-learning/api/hello/v1"
+	"github.com/halalala222/gf-learning/api/ncu_home/v1"
 	"github.com/halalala222/gf-learning/internal/model"
 	"github.com/halalala222/gf-learning/internal/service"
 )
 
-type cNcuHome struct{}
+type CNcuHome struct{}
 
-var CNcuHome = cNcuHome{}
+func New() *CNcuHome {
+	return &CNcuHome{}
+}
 
-func (c *cNcuHome) CreatePerson(ctx context.Context, req *v1.NcuHomeRep) (v1.NcuHomeRes, error) {
+func (c *CNcuHome) CreatePerson(ctx context.Context, req *v1.NcuHomeRep) (v1.NcuHomeRes, error) {
 	data := model.NcuHomeDto{
 		Sex:   req.Sex,
 		Group: req.Group,
