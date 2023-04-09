@@ -2,12 +2,11 @@ package cmd
 
 import (
 	"context"
+	"github.com/halalala222/gf-learning/internal/controller/ncu_home"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
-
-	"demo/internal/controller/hello"
 )
 
 var (
@@ -20,7 +19,7 @@ var (
 			s.Group("/", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
-					hello.New(),
+					ncu_home.New(),
 				)
 			})
 			s.Run()
