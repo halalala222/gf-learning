@@ -2,7 +2,7 @@ package v1
 
 import "github.com/gogf/gf/v2/frame/g"
 
-type NcuHomeRep struct {
+type NcuHomeReq struct {
 	g.Meta `path:"/ncuhome" method:"post"`
 	Name   string `v:"required"`
 	Group  string `v:"required"`

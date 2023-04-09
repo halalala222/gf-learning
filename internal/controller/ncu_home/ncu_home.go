@@ -13,7 +13,7 @@ func New() *CNcuHome {
 	return &CNcuHome{}
 }
 
-func (c *CNcuHome) CreatePerson(ctx context.Context, req *v1.NcuHomeRep) (v1.NcuHomeRes, error) {
+func (c *CNcuHome) CreatePerson(ctx context.Context, req *v1.NcuHomeReq) (v1.NcuHomeRes, error) {
 	data := model.NcuHomeDto{
 		Sex:   req.Sex,
 		Group: req.Group,
