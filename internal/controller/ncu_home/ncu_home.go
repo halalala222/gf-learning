@@ -2,7 +2,7 @@ package ncu_home
 
 import (
 	"context"
-	"github.com/halalala222/gf-learning/api/ncu_home/v1"
+	"github.com/halalala222/gf-learning/api/v1"
 	"github.com/halalala222/gf-learning/internal/model"
 	"github.com/halalala222/gf-learning/internal/service"
 )
