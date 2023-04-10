@@ -21,15 +21,11 @@ func New() service.INcuHome {
 }
 
 func (s *sNcuHome) Create(ctx context.Context, ncuHomeInput model.NcuHomeDto) (int64, error) {
-	result, err := dao.NcuHome.Ctx(ctx).Data(do.NcuHome{
+	return dao.NcuHome.CreateNcuHome(ctx, &do.NcuHome{
 		Sex:   ncuHomeInput.Sex,
-		Name:  ncuHomeInput.Name,
 		Group: ncuHomeInput.Group,
-	}).Insert()
-	if err != nil {
-		return 0, err
-	}
-	return result.LastInsertId()
+		Name:  ncuHomeInput.Name,
+	})
 }
 
 func (s *sNcuHome) Get(ctx context.Context) ([]model.NcuHomeDto, error) {
