@@ -14,7 +14,7 @@ func New() *CNcuHome {
 }
 
 func (c *CNcuHome) CreatePerson(ctx context.Context, req *v1.NcuHomeReq) (v1.NcuHomeRes, error) {
-	data := model.NcuHomeDto{
+	data := model.NcuHomeCreateInput{
 		Sex:   req.Sex,
 		Group: req.Group,
 		Name:  req.Name,
