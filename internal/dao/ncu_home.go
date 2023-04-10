@@ -5,7 +5,9 @@
 package dao
 
 import (
+	"context"
 	"github.com/halalala222/gf-learning/internal/dao/internal"
+	"github.com/halalala222/gf-learning/internal/model/do"
 )
 
 // internalNcuHomeDao is internal type for wrapping internal DAO implements.
@@ -25,3 +27,11 @@ var (
 )
 
 // Fill with you ideas below.
+
+func (n ncuHomeDao) CreateNcuHome(ctx context.Context, ncuHome *do.NcuHome) (int64, error) {
+	result, err := NcuHome.Ctx(ctx).Data(ncuHome).Insert()
+	if err != nil {
+		return 0, err
+	}
+	return result.LastInsertId()
+}
