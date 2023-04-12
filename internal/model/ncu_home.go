@@ -5,3 +5,12 @@ type NcuHomeCreateInput struct {
 	Sex   string
 	Group string
 }
+
+type UserLoginInput struct {
+	Password string
+	Username string
+}
+
+type UserLoginOutput struct {
+	Username string
+}
