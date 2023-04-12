@@ -42,7 +42,11 @@ func Authenticator(ctx context.Context) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	return User().Login(ctx, in)
+	login, err := User().Login(ctx, in)
+	if err == nil {
+		return login, nil
+	}
+	return nil, jwt.ErrFailedAuthentication
 }
 
 func Unauthorized(ctx context.Context, code int, msg string) {
