@@ -23,7 +23,7 @@ func New() service.IUser {
 
 func (s *sUser) Login(ctx context.Context, in model.UserLoginInput) (out *model.UserLoginOutput, err error) {
 	if in.Username != consts.FakeUserName || in.Password != consts.FakePassword {
-		return &model.UserLoginOutput{}, errors.New("un found user")
+		return &model.UserLoginOutput{}, errors.New("unfound user")
 	}
 	return &model.UserLoginOutput{
 		Username: in.Username,
