@@ -6,4 +6,5 @@ package logic
 
 import (
 	_ "github.com/halalala222/gf-learning/internal/logic/ncu_home"
+	_ "github.com/halalala222/gf-learning/internal/logic/user"
 )
