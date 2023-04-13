@@ -15,7 +15,7 @@ type LoginRes struct {
 }
 
 type WalletLoginReq struct {
-	g.Meta    `path:"/wallet/login" method:"POST"`
+	g.Meta    `path:"/login" method:"POST"`
 	Signature string `v:"required" json:"signature"`
 	Address   string `v:"required" json:"address"`
 	Challenge string `v:"required" json:"challenge"`
