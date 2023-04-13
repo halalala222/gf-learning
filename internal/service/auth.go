@@ -29,7 +29,7 @@ func init() {
 		TimeFunc:        time.Now,
 		Authenticator:   WalletLoginAuthenticator,
 		Unauthorized:    Unauthorized,
-		PayloadFunc:     PayloadFunc,
+		PayloadFunc:     WalletLoginPayloadFunc,
 		IdentityHandler: IdentityHandler,
 	})
 	authService = auth
@@ -83,6 +83,16 @@ func PayloadFunc(data interface{}) jwt.MapClaims {
 	}
 	return jwt.MapClaims{
 		"username": user.Username,
+	}
+}
+
+func WalletLoginPayloadFunc(data interface{}) jwt.MapClaims {
+	user := data.(*model.WalletLoginOutput)
+	if user == nil {
+		return nil
+	}
+	return jwt.MapClaims{
+		"username": user.Id,
 	}
 }
 
