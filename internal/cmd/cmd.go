@@ -24,13 +24,12 @@ var (
 					user.New().Login,
 				)
 				group.Group("/ncuhome", func(group *ghttp.RouterGroup) {
-					group.Middleware(ghttp.MiddlewareHandlerResponse, service.Middleware().Auth)
+					group.Middleware(service.Middleware().Auth)
 					group.Bind(
 						ncu_home.New().CreatePerson,
 					)
 				})
 				group.Group("/wallet", func(group *ghttp.RouterGroup) {
-					group.Middleware(ghttp.MiddlewareHandlerResponse)
 					group.Bind(
 						wallet.New().Login,
 					)
