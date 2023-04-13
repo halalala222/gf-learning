@@ -2,6 +2,8 @@ package service
 
 import (
 	"context"
+	"github.com/gogf/gf/v2/errors/gerror"
+	"github.com/halalala222/gf-learning/internal/consts"
 	"time"
 
 	jwt "github.com/gogf/gf-jwt/v2"
@@ -52,17 +54,17 @@ func Authenticator(ctx context.Context) (interface{}, error) {
 func WalletLoginAuthenticator(ctx context.Context) (interface{}, error) {
 	var (
 		r  = g.RequestFromCtx(ctx)
-		in *model.WalletLoginInput
+		in model.WalletLoginInput
 	)
-	err := r.Parse(in)
+	err := r.Parse(&in)
 	if err != nil {
 		return nil, err
 	}
-	userId, err := Wallet().Login(ctx, in)
-	if err != nil {
+	userId, err := Wallet().Login(ctx, &in)
+	if err == nil {
 		return userId, nil
 	}
-	return nil, jwt.ErrFailedAuthentication
+	return nil, gerror.NewCode(consts.ErrInvalidSignature)
 }
 
 func Unauthorized(ctx context.Context, code int, msg string) {
