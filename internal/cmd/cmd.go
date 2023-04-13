@@ -22,15 +22,19 @@ var (
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
 					user.New().Login,
-					wallet.New().Login,
 				)
-				group.Group("/", func(group *ghttp.RouterGroup) {
+				group.Group("/ncuhome", func(group *ghttp.RouterGroup) {
 					group.Middleware(ghttp.MiddlewareHandlerResponse, service.Middleware().Auth)
-					group.ALLMap(g.Map{
-						"/ncuhome": ncu_home.New().CreatePerson,
-					})
+					group.Bind(
+						ncu_home.New().CreatePerson,
+					)
 				})
-
+				group.Group("/wallet", func(group *ghttp.RouterGroup) {
+					group.Middleware(ghttp.MiddlewareHandlerResponse)
+					group.Bind(
+						wallet.New().Login,
+					)
+				})
 			})
 			s.Run()
 			return nil
