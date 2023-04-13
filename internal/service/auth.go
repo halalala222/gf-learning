@@ -25,7 +25,7 @@ func init() {
 		TokenLookup:     "header: Authorization",
 		TokenHeadName:   "Bearer",
 		TimeFunc:        time.Now,
-		Authenticator:   Authenticator,
+		Authenticator:   WalletLoginAuthenticator,
 		Unauthorized:    Unauthorized,
 		PayloadFunc:     PayloadFunc,
 		IdentityHandler: IdentityHandler,
@@ -45,6 +45,22 @@ func Authenticator(ctx context.Context) (interface{}, error) {
 	login, err := User().Login(ctx, in)
 	if err == nil {
 		return login, nil
+	}
+	return nil, jwt.ErrFailedAuthentication
+}
+
+func WalletLoginAuthenticator(ctx context.Context) (interface{}, error) {
+	var (
+		r  = g.RequestFromCtx(ctx)
+		in *model.WalletLoginInput
+	)
+	err := r.Parse(in)
+	if err != nil {
+		return nil, err
+	}
+	userId, err := Wallet().Login(ctx, in)
+	if err != nil {
+		return userId, nil
 	}
 	return nil, jwt.ErrFailedAuthentication
 }
